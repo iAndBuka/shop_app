@@ -1,7 +1,7 @@
 # Shopping application
 
 Team members:
-1) Andrei Bukatoi
+1) Andrei Bukatõi
 2) Raul Pratap Singh
 
 Project description:
