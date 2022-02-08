@@ -52,7 +52,7 @@ class LoginWithPage extends StatelessWidget {
                   padding: EdgeInsets.only(right: paddwidth*0.05,left: paddwidth*0.05),
                   child: Container(child: Divider(color: Colors.white,thickness: 2,)),
                 )),
-                Text("OR",style: TextStyle(color: Colors.white,fontSize: 20),),
+                Text("OR",style: TextStyle(color: Colors.white,fontSize: 20,fontFamily: "Lato"),),
                 Expanded(child: Padding(
                   padding: EdgeInsets.only(right: paddwidth*0.05,left: paddwidth*0.05),
                   child: Container(child: Divider(color: Colors.white,thickness: 2,)),

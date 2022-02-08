@@ -20,7 +20,7 @@ Widget logo() {
               style: TextStyle(
                   fontSize: 30,
                   color: Colors.white,
-                  fontWeight: FontWeight.bold),
+                  fontWeight: FontWeight.bold,fontFamily: "Lato"),
             )
           ],
         )
@@ -35,7 +35,7 @@ Widget input(IconData icon, String hint, TextEditingController controller,
     child: TextField(
       controller: controller,
       obscureText: obscure,
-      style: TextStyle(fontSize: 20, color: Colors.white),
+      style: TextStyle(fontSize: 20, color: Colors.white,fontFamily: "Lato"),
       decoration: InputDecoration(
           hintStyle: const TextStyle(
             fontWeight: FontWeight.bold,
@@ -73,7 +73,7 @@ Widget loginButton(String text, void func()) {
         style: TextStyle(
             fontWeight: FontWeight.bold,
             fontSize: 25,
-            color: Color.fromRGBO(31, 52, 56, 1)),
+            color: Color.fromRGBO(31, 52, 56, 1),fontFamily: "Lato"),
       ),
       onPressed: () {
         func();
@@ -94,7 +94,7 @@ Widget loginWithButtonMail(void func()){
         children: [
           Icon(Icons.mail,size: 20, color: Color.fromRGBO(31, 52, 56, 1),),
           SizedBox(width: 10),
-          Text("Sign in with email  ",style: TextStyle(fontSize: 20,color: Colors.black),textAlign: TextAlign.center,),
+          Text("Sign in with email  ",style: TextStyle(fontSize: 20,color: Colors.black,fontFamily: "Lato"),textAlign: TextAlign.center,),
         ],
       ),
     ],
@@ -144,7 +144,7 @@ class _GoogleSignInButtonState extends State<GoogleSignInButton> {
                 height: 20.0,
               ),
               SizedBox(width: 10),
-              Text("Sign in with Google",style: TextStyle(color: Color.fromRGBO(31, 52, 56, 1),fontSize: 20),)
+              Text("Sign in with Google",style: TextStyle(color: Color.fromRGBO(31, 52, 56, 1),fontSize: 20,fontFamily: "Lato"),)
             ],
           ),
 
@@ -194,7 +194,7 @@ class _FaceBookSignInButtonState extends State<FaceBookSignInButton> {
               height: 20.0,
             ),
             SizedBox(width: 10),
-            Text("Sign in with Facebook",style: TextStyle(color: Color.fromRGBO(31, 52, 56, 1),fontSize: 20),)
+            Text("Sign in with Facebook",style: TextStyle(color: Color.fromRGBO(31, 52, 56, 1),fontSize: 20,fontFamily: "Lato"),)
           ],
         ),
 

@@ -135,7 +135,7 @@ class _LoginPageState extends State<LoginPage> {
                                     style: TextStyle(
                                         color: Colors.white,
                                         fontSize: 25,
-                                        fontWeight: FontWeight.bold),
+                                        fontWeight: FontWeight.bold,fontFamily: "Lato"),
                                   ),
                                   onTap: () {
                                     setState(() {
@@ -161,7 +161,7 @@ class _LoginPageState extends State<LoginPage> {
                                     style: TextStyle(
                                         color: Colors.white,
                                         fontSize: 25,
-                                        fontWeight: FontWeight.bold),
+                                        fontWeight: FontWeight.bold,fontFamily: "Lato"),
                                   ),
                                   onTap: () {
                                     setState(() {
