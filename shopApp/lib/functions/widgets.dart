@@ -10,7 +10,7 @@ Widget logo() {
       children: [
         Row(
           children: [
-            Icon(Icons.shopping_bag_outlined, size: 100),
+            Image.asset('assets/logo.png',height: 150,width: 150,),
           ],
         ),
         Row(

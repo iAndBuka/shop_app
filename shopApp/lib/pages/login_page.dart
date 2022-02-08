@@ -82,7 +82,7 @@ class _LoginPageState extends State<LoginPage> {
       body: Column(
         children: [
           Padding(
-            padding: EdgeInsets.only(top: paddHeight * 0.2),
+            padding: EdgeInsets.only(top: paddHeight * 0.1),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
