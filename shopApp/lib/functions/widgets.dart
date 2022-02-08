@@ -1,26 +1,30 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:shop_app/objects/user.dart';
 import 'package:shop_app/services/database_service.dart';
 
 AuthService _authService = AuthService();
-Widget logo() {
+Widget logo(Size size) {
   return Container(
     child: Column(
       children: [
         Row(
           children: [
-            Image.asset('assets/logo.png',height: 150,width: 150,),
+            Image.asset(
+              'assets/logo.png',
+              height: size.height * 0.15,
+              width: size.width * 0.4,
+            ),
           ],
         ),
         Row(
           children: [
             Text(
-              "ShopApp",
+              "EasyBag",
               style: TextStyle(
-                  fontSize: 30,
+                  fontSize: 25,
                   color: Colors.white,
-                  fontWeight: FontWeight.bold,fontFamily: "Lato"),
+                  fontWeight: FontWeight.bold,
+                  fontFamily: "Lato"),
             )
           ],
         )
@@ -35,11 +39,10 @@ Widget input(IconData icon, String hint, TextEditingController controller,
     child: TextField(
       controller: controller,
       obscureText: obscure,
-      style: TextStyle(fontSize: 20, color: Colors.white,fontFamily: "Lato"),
+      style: TextStyle(fontSize: 16, color: Colors.white, fontFamily: "Lato"),
       decoration: InputDecoration(
           hintStyle: const TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 20,
+            fontSize: 15,
             color: Colors.white60,
           ),
           hintText: hint,
@@ -72,41 +75,55 @@ Widget loginButton(String text, void func()) {
         text,
         style: TextStyle(
             fontWeight: FontWeight.bold,
-            fontSize: 25,
-            color: Color.fromRGBO(31, 52, 56, 1),fontFamily: "Lato"),
+            fontSize: 20,
+            color: Color.fromRGBO(31, 52, 56, 1),
+            fontFamily: "Lato"),
       ),
       onPressed: () {
         func();
       });
 }
 
-
-Widget loginWithButtonMail(void func()){
+Widget loginWithButtonMail(void func()) {
   return ElevatedButton(
-  style: ButtonStyle(
-    shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(5))),
-    backgroundColor: MaterialStateProperty.all(Colors.white),overlayColor: MaterialStateProperty.all(Colors.black),
-  )
-  ,child: Column(
-    mainAxisAlignment: MainAxisAlignment.spaceAround,
-    children: [
-      Row(mainAxisAlignment: MainAxisAlignment.start,
+      style: ButtonStyle(
+        shape: MaterialStateProperty.all(
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(5))),
+        backgroundColor: MaterialStateProperty.all(Colors.white),
+        overlayColor: MaterialStateProperty.all(Colors.black),
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          Icon(Icons.mail,size: 20, color: Color.fromRGBO(31, 52, 56, 1),),
-          SizedBox(width: 10),
-          Text("Sign in with email  ",style: TextStyle(fontSize: 20,color: Colors.black,fontFamily: "Lato"),textAlign: TextAlign.center,),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Icon(
+                Icons.mail,
+                size: 20,
+                color: Color.fromRGBO(55, 66, 63, 1),
+              ),
+              SizedBox(width: 10),
+              Text(
+                "    Sign in with E-mail",
+                style: TextStyle(
+                    fontSize: 18, color: Colors.black, fontFamily: "Lato"),
+                textAlign: TextAlign.center,
+              ),
+            ],
+          ),
         ],
       ),
-    ],
-  ),
-
-  onPressed: (){func();});
-  
+      onPressed: () {
+        func();
+      });
 }
+
 class GoogleSignInButton extends StatefulWidget {
   @override
   _GoogleSignInButtonState createState() => _GoogleSignInButtonState();
 }
+
 class _GoogleSignInButtonState extends State<GoogleSignInButton> {
   bool _isSigningIn = false;
 
@@ -116,39 +133,43 @@ class _GoogleSignInButtonState extends State<GoogleSignInButton> {
       padding: const EdgeInsets.only(bottom: 16.0),
       child: _isSigningIn
           ? const CircularProgressIndicator(
-        valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
-      )
+              valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+            )
           : ElevatedButton(
-        style: ButtonStyle(
-          backgroundColor: MaterialStateProperty.all(Colors.white),
-          shape: MaterialStateProperty.all(
-            RoundedRectangleBorder(borderRadius: BorderRadius.circular(8))
-          ),
-        ),
-        onPressed: () async {
-          setState(() {
-            _isSigningIn = true;
-          });
-
-          AppUser? user = await _authService.googleLogIn();
-
-          setState(() {
-            _isSigningIn = false;
-          });
-        },
-        child: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: const <Widget>[
-              Image(
-                image: AssetImage("assets/google_logo.png"),
-                height: 20.0,
+              style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.all(Colors.white),
+                shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(5))),
               ),
-              SizedBox(width: 10),
-              Text("Sign in with Google",style: TextStyle(color: Color.fromRGBO(31, 52, 56, 1),fontSize: 20,fontFamily: "Lato"),)
-            ],
-          ),
+              onPressed: () async {
+                setState(() {
+                  _isSigningIn = true;
+                });
 
-      ),
+                AppUser? user = await _authService.googleLogIn();
+
+                setState(() {
+                  _isSigningIn = false;
+                });
+              },
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: const <Widget>[
+                  Image(
+                    image: AssetImage("assets/google_logo.png"),
+                    height: 20.0,
+                  ),
+                  SizedBox(width: 10),
+                  Text(
+                    "    Sign in with Google",
+                    style: TextStyle(
+                        color: Color.fromRGBO(31, 52, 56, 1),
+                        fontSize: 18,
+                        fontFamily: "Lato"),
+                  )
+                ],
+              ),
+            ),
     );
   }
 }
@@ -157,6 +178,7 @@ class FaceBookSignInButton extends StatefulWidget {
   @override
   _FaceBookSignInButtonState createState() => _FaceBookSignInButtonState();
 }
+
 class _FaceBookSignInButtonState extends State<FaceBookSignInButton> {
   bool _isSigningIn = false;
 
@@ -166,46 +188,52 @@ class _FaceBookSignInButtonState extends State<FaceBookSignInButton> {
       padding: const EdgeInsets.only(bottom: 16.0),
       child: _isSigningIn
           ? const CircularProgressIndicator(
-        valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
-      )
+              valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+            )
           : ElevatedButton(
-        style: ButtonStyle(
-          backgroundColor: MaterialStateProperty.all(Colors.white),
-          shape: MaterialStateProperty.all(
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(8))
-          ),
-        ),
-        onPressed: () async {
-          setState(() {
-            _isSigningIn = true;
-          });
+              style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.all(Colors.white),
+                shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(5))),
+              ),
+              onPressed: () async {
+                setState(() {
+                  _isSigningIn = true;
+                });
 
-          AppUser? user = await _authService.googleLogIn();
+                AppUser? user = await _authService.googleLogIn();
 
-          setState(() {
-            _isSigningIn = false;
-          });
-        },
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: const <Widget>[
-            Image(
-              image: AssetImage("assets/f_logo.png"),
-              height: 20.0,
+                setState(() {
+                  _isSigningIn = false;
+                });
+              },
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: const <Widget>[
+                  Image(
+                    image: AssetImage("assets/f_logo.png"),
+                    height: 20.0,
+                  ),
+                  SizedBox(width: 10),
+                  Text(
+                    "    Sign in with Facebook",
+                    style: TextStyle(
+                        color: Color.fromRGBO(31, 52, 56, 1),
+                        fontSize: 18,
+                        fontFamily: "Lato"),
+                  )
+                ],
+              ),
             ),
-            SizedBox(width: 10),
-            Text("Sign in with Facebook",style: TextStyle(color: Color.fromRGBO(31, 52, 56, 1),fontSize: 20,fontFamily: "Lato"),)
-          ],
-        ),
-
-      ),
     );
   }
 }
+
 class AppleSignInButton extends StatefulWidget {
   @override
   _AppleSignInButtonState createState() => _AppleSignInButtonState();
 }
+
 class _AppleSignInButtonState extends State<AppleSignInButton> {
   bool _isSigningIn = false;
 
@@ -215,39 +243,43 @@ class _AppleSignInButtonState extends State<AppleSignInButton> {
       padding: const EdgeInsets.only(bottom: 16.0),
       child: _isSigningIn
           ? const CircularProgressIndicator(
-        valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
-      )
+              valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+            )
           : ElevatedButton(
-        style: ButtonStyle(
-          backgroundColor: MaterialStateProperty.all(Colors.white),
-          shape: MaterialStateProperty.all(
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(8))
-          ),
-        ),
-        onPressed: () async {
-          setState(() {
-            _isSigningIn = true;
-          });
+              style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.all(Colors.white),
+                shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(5))),
+              ),
+              onPressed: () async {
+                setState(() {
+                  _isSigningIn = true;
+                });
 
-          AppUser? user = await _authService.googleLogIn();
+                AppUser? user = await _authService.googleLogIn();
 
-          setState(() {
-            _isSigningIn = false;
-          });
-        },
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: const <Widget>[
-            Image(
-              image: AssetImage("assets/apple_logo.png"),
-              height: 20.0,
+                setState(() {
+                  _isSigningIn = false;
+                });
+              },
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: const <Widget>[
+                  Image(
+                    image: AssetImage("assets/apple_logo.png"),
+                    height: 20.0,
+                  ),
+                  SizedBox(width: 10),
+                  Text(
+                    "    Sign in with Apple",
+                    style: TextStyle(
+                        color: Color.fromRGBO(31, 52, 56, 1),
+                        fontSize: 18,
+                        fontFamily: "Lato"),
+                  )
+                ],
+              ),
             ),
-            SizedBox(width: 10),
-            Text("Sign in with Apple",style: TextStyle(color: Color.fromRGBO(31, 52, 56, 1),fontSize: 20,fontFamily: "Lato"),)
-          ],
-        ),
-
-      ),
     );
   }
 }

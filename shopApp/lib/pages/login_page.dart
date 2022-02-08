@@ -76,106 +76,109 @@ class _LoginPageState extends State<LoginPage> {
       }
     }
 
-    return Scaffold(
-      resizeToAvoidBottomInset: false,
-      backgroundColor: Color.fromRGBO(31, 52, 56, 1),
-      body: Column(
-        children: [
-          Padding(
-            padding: EdgeInsets.only(top: paddHeight * 0.1),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                logo(),
-              ],
+    return ColorFiltered(
+      colorFilter: ColorFilter.mode(Colors.yellow.withOpacity(0.7), BlendMode.dstATop),
+      child: Scaffold(
+        resizeToAvoidBottomInset: false,
+        backgroundColor: Color.fromRGBO(55, 66, 63, 1),
+        body: Column(
+          children: [
+            Padding(
+              padding: EdgeInsets.only(top: paddHeight * 0.1),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  logo(size),
+                ],
+              ),
             ),
-          ),
-          Padding(
-            padding: EdgeInsets.only(top: paddHeight * 0.1),
-            child: Row(
+            Padding(
+              padding: EdgeInsets.only(top: paddHeight * 0.1),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Container(
+                      width: size.width * 0.9,
+                      height: size.height * 0.1,
+                      child: input(Icons.email, "Please input your email",
+                          _emailController, false))
+                ],
+              ),
+            ),
+            Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 Container(
                     width: size.width * 0.9,
                     height: size.height * 0.1,
-                    child: input(Icons.email, "Please input your email",
-                        _emailController, false))
+                    child: input(Icons.password_rounded,
+                        "Please input your password", _passwordController, true))
               ],
             ),
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              Container(
-                  width: size.width * 0.9,
-                  height: size.height * 0.1,
-                  child: input(Icons.password_rounded,
-                      "Please input your password", _passwordController, true))
-            ],
-          ),
-          Padding(
-            padding: EdgeInsets.only(top: paddHeight * 0.02),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                Container(
-                    child: (showLogin
-                        ? Column(
-                            children: [
-                              Container(
-                                  width: size.width * 0.8,
-                                  height: size.height * 0.07,
-                                  child: loginButton("Login", _loginbutton)),
-                              Padding(
-                                padding:
-                                    EdgeInsets.only(top: paddHeight * 0.04),
-                                child: GestureDetector(
-                                  child: Text(
-                                    "Register",
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 25,
-                                        fontWeight: FontWeight.bold,fontFamily: "Lato"),
+            Padding(
+              padding: EdgeInsets.only(top: paddHeight * 0.02),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Container(
+                      child: (showLogin
+                          ? Column(
+                              children: [
+                                Container(
+                                    width: size.width * 0.8,
+                                    height: size.height * 0.07,
+                                    child: loginButton("Login", _loginbutton)),
+                                Padding(
+                                  padding:
+                                      EdgeInsets.only(top: paddHeight * 0.04),
+                                  child: GestureDetector(
+                                    child: Text(
+                                      "Register",
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.bold,fontFamily: "Lato"),
+                                    ),
+                                    onTap: () {
+                                      setState(() {
+                                        showLogin = false;
+                                      });
+                                    },
                                   ),
-                                  onTap: () {
-                                    setState(() {
-                                      showLogin = false;
-                                    });
-                                  },
-                                ),
-                              )
-                            ],
-                          )
-                        : Column(
-                            children: [
-                              Container(
-                                  width: size.width * 0.8,
-                                  height: size.height * 0.07,
-                                  child: loginButton("Register", _registerbutton)),
-                              Padding(
-                                padding:
-                                    EdgeInsets.only(top: paddHeight * 0.04),
-                                child: GestureDetector(
-                                  child: Text(
-                                    "Login",
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 25,
-                                        fontWeight: FontWeight.bold,fontFamily: "Lato"),
+                                )
+                              ],
+                            )
+                          : Column(
+                              children: [
+                                Container(
+                                    width: size.width * 0.8,
+                                    height: size.height * 0.07,
+                                    child: loginButton("Register", _registerbutton)),
+                                Padding(
+                                  padding:
+                                      EdgeInsets.only(top: paddHeight * 0.04),
+                                  child: GestureDetector(
+                                    child: Text(
+                                      "Login",
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.bold,fontFamily: "Lato"),
+                                    ),
+                                    onTap: () {
+                                      setState(() {
+                                        showLogin = true;
+                                      });
+                                    },
                                   ),
-                                  onTap: () {
-                                    setState(() {
-                                      showLogin = true;
-                                    });
-                                  },
-                                ),
-                              )
-                            ],
-                          ))),
-              ],
-            ),
-          )
-        ],
+                                )
+                              ],
+                            ))),
+                ],
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
