@@ -202,3 +202,52 @@ class _FaceBookSignInButtonState extends State<FaceBookSignInButton> {
     );
   }
 }
+class AppleSignInButton extends StatefulWidget {
+  @override
+  _AppleSignInButtonState createState() => _AppleSignInButtonState();
+}
+class _AppleSignInButtonState extends State<AppleSignInButton> {
+  bool _isSigningIn = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 16.0),
+      child: _isSigningIn
+          ? const CircularProgressIndicator(
+        valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+      )
+          : ElevatedButton(
+        style: ButtonStyle(
+          backgroundColor: MaterialStateProperty.all(Colors.white),
+          shape: MaterialStateProperty.all(
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(8))
+          ),
+        ),
+        onPressed: () async {
+          setState(() {
+            _isSigningIn = true;
+          });
+
+          AppUser? user = await _authService.googleLogIn();
+
+          setState(() {
+            _isSigningIn = false;
+          });
+        },
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: const <Widget>[
+            Image(
+              image: AssetImage("assets/apple_logo.png"),
+              height: 20.0,
+            ),
+            SizedBox(width: 10),
+            Text("Sign in with Apple",style: TextStyle(color: Color.fromRGBO(31, 52, 56, 1),fontSize: 20,fontFamily: "Lato"),)
+          ],
+        ),
+
+      ),
+    );
+  }
+}

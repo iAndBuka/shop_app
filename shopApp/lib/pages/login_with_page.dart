@@ -61,7 +61,7 @@ class LoginWithPage extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: EdgeInsets.only(top: paddHeight * 0.1),
+            padding: EdgeInsets.only(top: paddHeight * 0.05),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [Container(
@@ -78,6 +78,16 @@ class LoginWithPage extends StatelessWidget {
                   width: size.width * 0.8,
                   height: size.height * 0.08,
                   child: FaceBookSignInButton())],
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.only(top: paddHeight * 0.01),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [Container(
+                  width: size.width * 0.8,
+                  height: size.height * 0.08,
+                  child: AppleSignInButton())],
             ),
           )
         ],
