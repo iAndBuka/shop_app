@@ -17,7 +17,7 @@ Widget logo(Size size) {
           ],
         ),
         Row(
-          children: [
+          children: const [
             Text(
               "EasyBag",
               style: TextStyle(
@@ -39,7 +39,7 @@ Widget input(IconData icon, String hint, TextEditingController controller,
     child: TextField(
       controller: controller,
       obscureText: obscure,
-      style: TextStyle(fontSize: 16, color: Colors.white, fontFamily: "Lato"),
+      style: const TextStyle(fontSize: 16, color: Colors.white, fontFamily: "Lato"),
       decoration: InputDecoration(
           hintStyle: const TextStyle(
             fontSize: 15,
@@ -48,12 +48,12 @@ Widget input(IconData icon, String hint, TextEditingController controller,
           hintText: hint,
           focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(20),
-              borderSide: BorderSide(color: Colors.white, width: 3)),
+              borderSide: const BorderSide(color: Colors.white, width: 3)),
           enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(20),
-              borderSide: BorderSide(color: Colors.white, width: 1)),
+              borderSide: const BorderSide(color: Colors.white, width: 1)),
           prefixIcon: Padding(
-            padding: EdgeInsets.only(left: 10, right: 10),
+            padding: const EdgeInsets.only(left: 10, right: 10),
             child: Icon(
               icon,
               color: Colors.white,
@@ -120,6 +120,8 @@ Widget loginWithButtonMail(void func()) {
 }
 
 class GoogleSignInButton extends StatefulWidget {
+  const GoogleSignInButton({Key? key}) : super(key: key);
+
   @override
   _GoogleSignInButtonState createState() => _GoogleSignInButtonState();
 }

@@ -62,13 +62,6 @@ class AuthService {
         return null;  }
     }
   }
-  Future<AppUser?> facebookLogIn()async {
-    final FacebookLogin fbLogin = FacebookLogin();
-
-
-
-  }
-
 
 }
 
