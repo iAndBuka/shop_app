@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_styled_toast/flutter_styled_toast.dart';
 import 'package:shop_app/functions/widgets.dart';
 import 'package:shop_app/objects/user.dart';
+import 'package:shop_app/pages/login_with_page.dart';
 import 'package:shop_app/services/database_service.dart';
 
 class LoginPage extends StatefulWidget {
@@ -45,9 +46,11 @@ class _LoginPageState extends State<LoginPage> {
           reverseCurve: Curves.linear,
         );
       } else {
+        Navigator.pop(context);
         _emailController.clear();
         _passwordController.clear();
       }
+
     }
 
     void _registerbutton() async {
@@ -71,6 +74,7 @@ class _LoginPageState extends State<LoginPage> {
           reverseCurve: Curves.linear,
         );
       } else {
+        Navigator.pop(context);
         _emailController.clear();
         _passwordController.clear();
       }
@@ -80,7 +84,7 @@ class _LoginPageState extends State<LoginPage> {
       colorFilter: ColorFilter.mode(Colors.yellow.withOpacity(0.7), BlendMode.dstATop),
       child: Scaffold(
         resizeToAvoidBottomInset: false,
-        backgroundColor: Color.fromRGBO(55, 66, 63, 1),
+        backgroundColor: Color.fromRGBO(55, 66, 63, 1.0),
         body: Column(
           children: [
             Padding(
