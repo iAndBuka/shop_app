@@ -12,6 +12,7 @@ class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
     AuthService _authService = AuthService();
+    DataBaseService db = DataBaseService();
     final Size size = MediaQuery.of(context).size;
     final double paddHeight = MediaQuery.of(context).size.height;
     final double paddwidth = MediaQuery.of(context).size.width;
@@ -37,7 +38,7 @@ class _ProfilePageState extends State<ProfilePage> {
         child: Row(children: [
           Container(
             child: ElevatedButton(
-              onPressed: (){},
+              onPressed: (){{db.addCategory(Lists.beverages);}},
               child: Text("clocl"),
             ),
           )
