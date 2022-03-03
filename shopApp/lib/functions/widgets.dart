@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:shop_app/objects/lists.dart';
 import 'package:shop_app/objects/user.dart';
+import 'package:shop_app/pages/bottom_navigator.dart';
+import 'package:shop_app/pages/shopping_list_page.dart';
 import 'package:shop_app/services/database_service.dart';
+
+import 'functions.dart';
 
 AuthService _authService = AuthService();
 Widget logo(Size size) {
@@ -283,5 +288,65 @@ class _AppleSignInButtonState extends State<AppleSignInButton> {
               ),
             ),
     );
+  }
+}
+
+
+
+class ListViewWidget extends StatefulWidget {
+  final AppUser user;
+  const ListViewWidget({Key? key, required this.user}) : super(key: key);
+
+  @override
+  _ListViewWidgetState createState() => _ListViewWidgetState();
+}
+
+class _ListViewWidgetState extends State<ListViewWidget> {
+  @override
+  Widget build(BuildContext context) {
+    return GridView.builder(  physics: NeverScrollableScrollPhysics(), shrinkWrap: true,gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3), itemCount: a!.list!.length ,itemBuilder: (context,index){
+      return GestureDetector(onTap: (){
+        setState(() {
+         Lists.removeFromShopList(index);
+          print(Lists.shopList.toString());
+          a!.list!.removeAt(index);
+          addList(a!.list!, widget.user);
+        });
+        Navigator.push(
+            context, MaterialPageRoute(builder: (ctx) => BottomBar()));},
+
+        child:
+        Padding(
+          padding: const EdgeInsets.all(5.0),
+          child: Card(
+            color:  Color.fromRGBO(45, 54, 50, 1.0),
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+            elevation: 3,
+            child: Align(
+              alignment: Alignment.bottomCenter,
+              child: Container(child:
+              Text(a!.list![index].name, style: TextStyle(fontSize: 17,fontFamily: "Lato",color: Colors.white),),
+              ),
+            ),
+          ),
+        ),);
+
+    });
+  }
+}
+
+class NothingWidget extends StatefulWidget {
+  final Size size;
+  const NothingWidget({Key? key,required this.size}) : super(key: key);
+
+  @override
+  _NothingWidgetState createState() => _NothingWidgetState();
+}
+
+class _NothingWidgetState extends State<NothingWidget> {
+  @override
+   Widget build(BuildContext context) {
+   return SizedBox(height: widget.size.height*0.2,width: widget.size.width,child:
+    Center(child: Text("Nothing", style: TextStyle(fontSize: 20,fontFamily: "Lato",color: Colors.white),),),);
   }
 }

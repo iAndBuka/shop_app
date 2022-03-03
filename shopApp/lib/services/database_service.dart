@@ -3,9 +3,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:shop_app/objects/category.dart';
 import 'package:shop_app/objects/product.dart';
+import 'package:shop_app/objects/recipe.dart';
 import 'package:shop_app/objects/shop_list.dart';
 import 'package:shop_app/objects/user.dart';
-import 'package:flutter_login_facebook/flutter_login_facebook.dart';
+
 
 class AuthService {
   final FirebaseAuth _fAuth = FirebaseAuth.instance;
@@ -74,14 +75,23 @@ class DataBaseService{
   final CollectionReference _productsCollection = FirebaseFirestore.instance.collection('products');
   final CollectionReference _listCollection = FirebaseFirestore.instance.collection('list');
   final CollectionReference _categoryCollection = FirebaseFirestore.instance.collection('category');
+  final CollectionReference _recipeCollection = FirebaseFirestore.instance.collection('recipe');
 
   Future addCategory(Category category) async{
     return await _categoryCollection.doc(category.id).set(category.toMap());
+
+  } Future addRecipe(Recipe recipe) async{
+    return await _recipeCollection.doc(recipe.id).set(recipe.toMap());
 
   }
   Stream<List<Category>> getCategories(){
     return _categoryCollection.snapshots().map((QuerySnapshot data) =>
         data.docs.map((DocumentSnapshot doc) => Category.fromJson(doc.id,doc.data() as Map<String, dynamic>)).toList());
+
+  }
+  Stream<List<Recipe>> getRecipe(){
+    return _recipeCollection.snapshots().map((QuerySnapshot data) =>
+        data.docs.map((DocumentSnapshot doc) => Recipe.fromJson(doc.id,doc.data() as Map<String, dynamic>)).toList());
 
   }
 

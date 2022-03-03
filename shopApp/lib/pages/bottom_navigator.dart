@@ -47,7 +47,7 @@ class _BottomBarState extends State<BottomBar> {
           items: [
             BottomNavigationBarItem(icon: Icon(Icons.format_list_bulleted_outlined),label: "List"),
             BottomNavigationBarItem(icon: Icon(Icons.food_bank_outlined),label: "Recipes"),
-            BottomNavigationBarItem(icon: Icon(Icons.people_alt_outlined),label: "Profile"),
+            BottomNavigationBarItem(icon: Icon(Icons.person),label: "Profile"),
 
           ],
         ),

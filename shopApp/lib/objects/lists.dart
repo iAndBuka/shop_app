@@ -1,4 +1,5 @@
 import 'package:shop_app/objects/product.dart';
+import 'package:shop_app/objects/recipe.dart';
 import 'package:shop_app/objects/shop_list.dart';
 
 import 'category.dart';
@@ -36,6 +37,12 @@ class Lists {
  static List<Product> meatFish = [bacon,beef,ham,lamb,chicken];
  static List<Product> beverage = [juice,coffee,cola,energy,water];
 
+  static List<Product> shopList = <Product>[];
+
+  static void removeFromShopList(int index){
+    shopList.removeAt(index);
+}
+
 
 
   static Category fruitsAndVeg =
@@ -48,8 +55,20 @@ class Lists {
       Category(id: "4", name: "Meat and Fish", list: meatFish);
   static Category beverages = Category(id: "5", name: "Beverages", list: beverage);
 
+  static Recipe beefStew = Recipe(id: "1", name: "Beef Stew V", description: "A charming beef stew flavored with red wine and vegetables.",
+      imageAddress: "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fimages.media-allrecipes.com%2Fuserphotos%2F49121.jpg&w=272&h=272&c=sc&poi=face&q=60",
+      webAddress: "https://www.allrecipes.com/recipe/23152/beef-stew-v/");
+  static Recipe blueBerryBreakfast= Recipe(id: "2", name: "Blueberry Lemon Breakfast", description: "Sweet blueberries and tart lemon pair well in this alternative to oatmeal.",
+      imageAddress: "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fimages.media-allrecipes.com%2Fuserphotos%2F958126.jpg&w=272&h=272&c=sc&poi=face&q=60",
+      webAddress: "https://www.allrecipes.com/recipe/230830/blueberry-lemon-breakfast-quinoa/");
+  static Recipe lemonade= Recipe(id: "3", name: "Best Lemonade Ever", description: "Lemonade is a very refreshing drink, and this is the best one ever!",
+      imageAddress: "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F43%2F2021%2F10%2F27%2FLemonade.jpg&w=272&h=272&c=sc&poi=face&q=60",
+      webAddress: "https://www.allrecipes.com/recipe/32385/best-lemonade-ever/");
 
 
+  static List<Recipe> b = [
+    beefStew,blueBerryBreakfast,lemonade
+  ];
     
   static List a =  [
     fruitsAndVeg,
