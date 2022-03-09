@@ -1,0 +1,21 @@
+{
+  "log_out": "Log out",
+  "sign_in_with_email": "Sign in with E-mail",
+  "sign_in_google": "Sign in with Google",
+  "sign_in_face": "Sign in with Facebook",
+  "sign_in_apple": "Sign in with Apple",
+  "input_email": "Please input your email",
+  "input_password": "Please input your password",
+  "login": "Login",
+  "register": "Register",
+  "home": "Home",
+  "need_to_buy": "You need to buy",
+  "nothing": "Nothing ",
+  "list": "List",
+  "recipes": "Recipe",
+  "see_recipe": "See recipe",
+  "share_recipe": "Share recipe",
+  "profile": "Profile",
+  "hi": "Hi",
+  "or": "Or"
+}

@@ -4,6 +4,8 @@ import 'package:shop_app/functions/widgets.dart';
 import 'package:shop_app/objects/user.dart';
 import 'package:shop_app/pages/login_page.dart';
 import 'package:shop_app/services/database_service.dart';
+import 'package:easy_localization/easy_localization.dart';
+import 'package:shop_app/translations/locale_keys.g.dart';
 
 class LoginWithPage extends StatelessWidget {
   const LoginWithPage({Key? key}) : super(key: key);
@@ -54,7 +56,7 @@ class LoginWithPage extends StatelessWidget {
                     padding: EdgeInsets.only(right: paddwidth*0.05,left: paddwidth*0.05),
                     child: Container(child: Divider(color: Colors.white,thickness: 2,)),
                   )),
-                  Text("OR",style: TextStyle(color: Colors.white,fontSize: 20,fontFamily: "Lato"),),
+                  Text(LocaleKeys.or.tr(),style: TextStyle(color: Colors.white,fontSize: 20,fontFamily: "Lato"),),
                   Expanded(child: Padding(
                     padding: EdgeInsets.only(right: paddwidth*0.05,left: paddwidth*0.05),
                     child: Container(child: Divider(color: Colors.white,thickness: 2,)),

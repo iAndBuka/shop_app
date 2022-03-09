@@ -6,6 +6,9 @@ import 'package:provider/provider.dart';
 import 'package:shop_app/functions/functions.dart';
 import 'package:shop_app/objects/recipe.dart';
 import 'package:shop_app/objects/user.dart';
+import 'package:easy_localization/easy_localization.dart';
+
+import '../translations/locale_keys.g.dart';
 
 List<Recipe> recipes = <Recipe>[];
 
@@ -47,8 +50,8 @@ class _RecipesPageState extends State<RecipesPage> {
         elevation: 0,
         backgroundColor: Color.fromRGBO(55, 66, 63, 1),
         title: Center(
-            child: Text(
-          "Recipes",
+            child: Text(LocaleKeys.recipes.tr()
+          ,
           style:
               TextStyle(fontFamily: "Lato", fontSize: 25, color: Colors.white),
         )),
@@ -138,7 +141,7 @@ class _RecipesPageState extends State<RecipesPage> {
                                           child: Row(
                                             children: [
                                               Icon(Icons.web),
-                                              Text("See recipe",
+                                              Text(LocaleKeys.see_recipe.tr(),
                                                   style: TextStyle()),
                                             ],
                                           ),
@@ -155,7 +158,7 @@ class _RecipesPageState extends State<RecipesPage> {
                                             children: [
                                               Icon(Icons.share),
                                               Text(
-                                                "Share recipe",
+                                                LocaleKeys.share_recipe.tr(),
                                                 style: TextStyle(),
                                               )
                                             ],

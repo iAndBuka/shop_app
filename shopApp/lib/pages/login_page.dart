@@ -1,9 +1,11 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_styled_toast/flutter_styled_toast.dart';
 import 'package:shop_app/functions/widgets.dart';
 import 'package:shop_app/objects/user.dart';
 import 'package:shop_app/pages/login_with_page.dart';
 import 'package:shop_app/services/database_service.dart';
+import 'package:shop_app/translations/locale_keys.g.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -104,7 +106,7 @@ class _LoginPageState extends State<LoginPage> {
                   Container(
                       width: size.width * 0.9,
                       height: size.height * 0.1,
-                      child: input(Icons.email, "Please input your email",
+                      child: input(Icons.email, LocaleKeys.input_email.tr(),
                           _emailController, false))
                 ],
               ),
@@ -116,7 +118,7 @@ class _LoginPageState extends State<LoginPage> {
                     width: size.width * 0.9,
                     height: size.height * 0.1,
                     child: input(Icons.password_rounded,
-                        "Please input your password", _passwordController, true))
+                        LocaleKeys.input_password.tr(), _passwordController, true))
               ],
             ),
             Padding(
@@ -131,13 +133,13 @@ class _LoginPageState extends State<LoginPage> {
                                 Container(
                                     width: size.width * 0.8,
                                     height: size.height * 0.07,
-                                    child: loginButton("Login", _loginbutton)),
+                                    child: loginButton(LocaleKeys.login.tr(), _loginbutton)),
                                 Padding(
                                   padding:
                                       EdgeInsets.only(top: paddHeight * 0.04),
                                   child: GestureDetector(
                                     child: Text(
-                                      "Register",
+                                      LocaleKeys.register.tr(),
                                       style: TextStyle(
                                           color: Colors.white,
                                           fontSize: 20,
@@ -157,13 +159,13 @@ class _LoginPageState extends State<LoginPage> {
                                 Container(
                                     width: size.width * 0.8,
                                     height: size.height * 0.07,
-                                    child: loginButton("Register", _registerbutton)),
+                                    child: loginButton(LocaleKeys.register.tr(), _registerbutton)),
                                 Padding(
                                   padding:
                                       EdgeInsets.only(top: paddHeight * 0.04),
                                   child: GestureDetector(
                                     child: Text(
-                                      "Login",
+                                      LocaleKeys.login.tr(),
                                       style: TextStyle(
                                           color: Colors.white,
                                           fontSize: 20,

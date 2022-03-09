@@ -27,6 +27,7 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  easy_localization: ^3.0.0
   url_launcher: ^6.0.20
   firebase_messaging_platform_interface: 3.1.6
   flutter_snake_navigationbar: 0.5.0
@@ -72,6 +73,21 @@ flutter:
      - assets/f_logo.png
      - assets/apple_logo.png
      - assets/logo.png
+     - assets/banana.png
+     - assets/cucumber.png
+     - assets/melon.png
+     - assets/potato.png
+     - assets/tomato.png
+     - assets/bread.png
+     - assets/buns.png
+     - assets/pie.png
+     - assets/donuts.png
+     - assets/croiss.png
+     - assets/milk.png
+     - assets/cheese.png
+     - assets/butter.png
+     - assets/eggs.png
+     - assets/translations/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

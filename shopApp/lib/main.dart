@@ -1,16 +1,28 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:provider/provider.dart';
 import 'package:shop_app/pages/check_user_page.dart';
 import 'package:shop_app/services/database_service.dart';
+import 'package:shop_app/translations/codegen_loader.g.dart';
 
 import 'objects/user.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await EasyLocalization.ensureInitialized();
   await Firebase.initializeApp();
-  runApp(MaterialApp(
-    home: ShopApp(),
+  runApp(EasyLocalization(
+    path: 'assets/translations',
+    assetLoader: CodegenLoader(),
+    supportedLocales: [
+      Locale('en'),
+      Locale('ru')
+    ],
+    fallbackLocale: Locale('en'),
+    child: MaterialApp(
+      home: ShopApp(),
+    ),
   ));
 }
 
@@ -28,6 +40,9 @@ class _ShopAppState extends State<ShopApp> {
       value: AuthService().currentUser,
       initialData: null,
       child: MaterialApp(
+        supportedLocales: context.supportedLocales,
+        localizationsDelegates: context.localizationDelegates,
+        locale: context.locale,
         home: Check(),
       ),
     );

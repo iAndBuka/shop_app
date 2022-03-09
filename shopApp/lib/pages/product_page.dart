@@ -9,18 +9,21 @@ import 'package:shop_app/objects/product.dart';
 import 'package:shop_app/objects/user.dart';
 import 'package:shop_app/pages/bottom_navigator.dart';
 import 'package:shop_app/services/database_service.dart';
+
 late Category category;
 late String name;
 late List products;
-void open(Category a){
+void open(Category a) {
   category = a;
   name = a.name;
   products = a.list;
 }
+
 Set<Product> shopList = <Product>{};
 
-Color cardColor=  Color.fromRGBO(45, 54, 50, 1.0);
+Color cardColor = Color.fromRGBO(45, 54, 50, 1.0);
 int _selectedIndex = -1;
+
 class ProductsPage extends StatefulWidget {
   const ProductsPage({Key? key}) : super(key: key);
 
@@ -39,51 +42,100 @@ class _ProductsPageState extends State<ProductsPage> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor: Color.fromRGBO(55, 66, 63, 1),
-      body: Column(children: [
-        Padding(
-          padding: EdgeInsets.only(top: paddHeight*0.1),
-          child: Row(mainAxisAlignment: MainAxisAlignment.spaceAround,children: [
-            Text(name,style: TextStyle(fontSize: 20,fontFamily: "Lato",color: Colors.white,fontWeight: FontWeight.bold),)
-          ],),
-        ),
-        Expanded(child:
-        GridView.builder(
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
-            itemCount: products.length ,
-            itemBuilder: (context,index){
-              return GestureDetector(onTap: (){
-                Lists.shopList.add(products[index]);
-                addList(Lists.shopList, user);
-              },
-                child: Card(
-                  color:  cardColor,
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-                  elevation: 10,
-                  child: Align(
-                    alignment: Alignment.bottomCenter,
-                    child: Container(
-                      child: Text(products[index].name, style: TextStyle(fontSize: 20,fontFamily: "Lato",fontWeight: FontWeight.bold,color: Colors.white),),
+      body: Column(
+        children: [
+          Padding(
+            padding: EdgeInsets.only(top: paddHeight * 0.1),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Text(
+                  name,
+                  style: TextStyle(
+                      fontSize: 20,
+                      fontFamily: "Lato",
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold),
+                )
+              ],
+            ),
+          ),
+          Expanded(
+              child: GridView.builder(
+            gridDelegate:
+                SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
+            itemCount: products.length,
+            itemBuilder: (context, index) {
+              return GestureDetector(
+                  onTap: () {
+                    Lists.shopList.add(products[index]);
+                    addList(Lists.shopList, user);
+                  },
+                  child: Card(
+                    color: cardColor,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8)),
+                    elevation: 10,
+                    child: Column(
+                      children: [
+                        Container(
+                          color: cardColor,
+                          width: size.width * 0.3,
+                          height: size.height * 0.1,
+                          child: Card(
+                            color: cardColor,
+                            semanticContainer: true,
+                            clipBehavior: Clip.antiAliasWithSaveLayer,
+                            child: Image.asset(
+                              products[index].image,
+                              fit: BoxFit.cover,
+                            ),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10.0),
+                            ),
+                            elevation: 0,
+                          ),
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            Container(
+                              child: Text(
+                                products[index].name,
+                                style: TextStyle(
+                                    fontSize: 20,
+                                    fontFamily: "Lato",
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
                     ),
+                  ));
+            },
+          )),
+          Center(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (ctx) => BottomBar()));
+                  },
+                  child: Text(
+                    "Go back",
+                    style: TextStyle(
+                        fontFamily: "Lato", fontSize: 20, color: Colors.white),
                   ),
                 )
-
-                );
-        },
-
-
-
-        )
-        ),
-
-        Center(
-          child: Row(mainAxisAlignment: MainAxisAlignment.spaceAround,children: [
-            GestureDetector(onTap:(){
-    Navigator.push(
-    context, MaterialPageRoute(builder: (ctx) => BottomBar()));},
-            child: Text("Go back",style: TextStyle(fontFamily: "Lato",fontSize: 20,color: Colors.white),),)
-          ],),
-        )
-      ],),
+              ],
+            ),
+          )
+        ],
+      ),
     );
   }
 }

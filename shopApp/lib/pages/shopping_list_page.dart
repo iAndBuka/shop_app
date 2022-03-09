@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shop_app/functions/functions.dart';
@@ -9,6 +10,8 @@ import 'package:shop_app/objects/shop_list.dart';
 import 'package:shop_app/objects/user.dart';
 import 'package:shop_app/pages/product_page.dart';
 import 'package:shop_app/services/database_service.dart';
+
+import '../translations/locale_keys.g.dart';
 
 
 List categories = <Category>[];
@@ -68,15 +71,15 @@ class _ShoppingListPageState extends State<ShoppingListPage> {
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Color.fromRGBO(55, 66, 63, 1) ,
-        title: Center(child: Text("Home",style: TextStyle(fontFamily: "Lato",fontSize: 25,color: Colors.white),)),),
+        title: Center(child: Text(LocaleKeys.home.tr(),style: TextStyle(fontFamily: "Lato",fontSize: 25,color: Colors.white),)),),
       resizeToAvoidBottomInset: false,
       backgroundColor: Color.fromRGBO(55, 66, 63, 1),
       body: SingleChildScrollView(
         child: Column(children: [
-          Padding(padding: EdgeInsets.only(top: paddHeight*0.05,left: paddwidth*0.03),
+          Padding(padding: EdgeInsets.only(top: paddHeight*0.02 ,left: paddwidth*0.03),
             child: Row(
               children: [
-                Container(child: Text("You need to buy",style: TextStyle(color: Colors.white,fontSize: 25,fontFamily: "Lato"),),),
+                Container(child: Text(LocaleKeys.need_to_buy.tr(),style: TextStyle(color: Colors.white,fontSize: 20,fontFamily: "Lato"),),),
               ],
             ),
           ),
@@ -88,7 +91,7 @@ class _ShoppingListPageState extends State<ShoppingListPage> {
                 stream: FirebaseFirestore.instance.collection('list').doc('1').snapshots(),
                 builder: (BuildContext context,
                     AsyncSnapshot<dynamic> snapshot){
-                  return ListViewWidget(user: user);
+                  return ListViewWidget(user: user,size: size,);
                 }
               )
 
@@ -98,7 +101,7 @@ class _ShoppingListPageState extends State<ShoppingListPage> {
               child: StreamBuilder(
                 stream: FirebaseFirestore.instance.collection('category').snapshots(),
                 builder: (BuildContext context,
-                    AsyncSnapshot<dynamic> snapshot){
+                      AsyncSnapshot<dynamic> snapshot){
                   return Padding(
                     padding:  EdgeInsets.only(top: paddHeight*0.05),
                     child: ListView.builder(

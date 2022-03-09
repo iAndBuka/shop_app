@@ -1,0 +1,21 @@
+{
+  "log_out": "Выйти",
+  "sign_in_with_email": "Войти с Э-почтой",
+  "sign_in_google": "Войти с Google",
+  "sign_in_face": "Войти с Facebook",
+  "sign_in_apple": "Войти с Apple",
+  "input_email": "Пожалуйста введие свою Э-почту",
+  "input_password": "Пожалуйста введите свой пароль",
+  "login": "Войти",
+  "register": "Зарегистрироваться",
+  "home": "Главная",
+  "need_to_buy": "Вам нужно купить",
+  "nothing": "Ничего",
+  "list": "Лист",
+  "recipes": "Рецепты",
+  "see_recipe": "Посмотреть рецепт",
+  "share_recipe": "Поделиться",
+  "profile": "Профиль",
+  "hi": "Привет",
+  "or": "Или"
+}

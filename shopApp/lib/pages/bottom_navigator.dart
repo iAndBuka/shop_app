@@ -5,6 +5,8 @@ import 'package:shop_app/pages/login_with_page.dart';
 import 'package:shop_app/pages/profile_page.dart';
 import 'package:shop_app/pages/recipes_page.dart';
 import 'package:shop_app/pages/shopping_list_page.dart';
+import 'package:easy_localization/easy_localization.dart';
+import 'package:shop_app/translations/locale_keys.g.dart';
 
 class BottomBar extends StatefulWidget {
   const BottomBar({Key? key}) : super(key: key);
@@ -45,9 +47,9 @@ class _BottomBarState extends State<BottomBar> {
           currentIndex: _currentIndex,
           onTap: (index) => setState(() => _currentIndex = index),
           items: [
-            BottomNavigationBarItem(icon: Icon(Icons.format_list_bulleted_outlined),label: "List"),
-            BottomNavigationBarItem(icon: Icon(Icons.food_bank_outlined),label: "Recipes"),
-            BottomNavigationBarItem(icon: Icon(Icons.person),label: "Profile"),
+            BottomNavigationBarItem(icon: Icon(Icons.format_list_bulleted_outlined),label: LocaleKeys.list.tr()),
+            BottomNavigationBarItem(icon: Icon(Icons.food_bank_outlined),label: LocaleKeys.recipes.tr()),
+            BottomNavigationBarItem(icon: Icon(Icons.person),label: LocaleKeys.profile.tr()),
 
           ],
         ),
