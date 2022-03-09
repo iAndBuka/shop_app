@@ -127,7 +127,7 @@ class _ProfilePageState extends State<ProfilePage> {
                               return AlertDialog(
                                 backgroundColor: Color.fromRGBO(55, 66, 63, 1).withOpacity(0.5),
                                 title: Text(
-                                    "Change language",style: TextStyle(fontSize: 15,fontFamily: "Lato",color: Colors.white)),
+                                    LocaleKeys.change_language.tr(),style: TextStyle(fontSize: 15,fontFamily: "Lato",color: Colors.white)),
                                 actions: <Widget>[
                                   Row(
                                     mainAxisAlignment:
@@ -204,7 +204,7 @@ class _ProfilePageState extends State<ProfilePage> {
                     child:
                     Center(
                       child: Text(
-                          "Change language",
+                          LocaleKeys.change_language.tr(),
                           style:TextStyle(fontSize: 15,fontFamily: "Lato",color: Colors.white)
                       ),
                     ),

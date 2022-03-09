@@ -20,5 +20,6 @@ abstract class  LocaleKeys {
   static const profile = 'profile';
   static const hi = 'hi';
   static const or = 'or';
+  static const change_language = 'change_language';
 
 }

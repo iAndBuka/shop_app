@@ -33,7 +33,8 @@ class CodegenLoader extends AssetLoader{
   "share_recipe": "Share recipe",
   "profile": "Profile",
   "hi": "Hi",
-  "or": "Or"
+  "or": "Or",
+  "change_language": "Change language"
 };
 static const Map<String,dynamic> ru = {
   "log_out": "Выйти",
@@ -54,7 +55,8 @@ static const Map<String,dynamic> ru = {
   "share_recipe": "Поделиться",
   "profile": "Профиль",
   "hi": "Привет",
-  "or": "Или"
+  "or": "Или",
+  "change_language": "Сменить язык"
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"en": en, "ru": ru};
 }
