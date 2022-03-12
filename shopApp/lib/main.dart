@@ -6,6 +6,7 @@ import 'package:shop_app/pages/check_user_page.dart';
 import 'package:shop_app/services/database_service.dart';
 import 'package:shop_app/translations/codegen_loader.g.dart';
 
+import 'objects/lists.dart';
 import 'objects/user.dart';
 
 void main() async {

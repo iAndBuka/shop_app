@@ -16,6 +16,9 @@ DataBaseService db = DataBaseService();
 Stream<List<Category>> getCategories() {
   return db.getCategories();
 
+}Stream<List<Category>> getCategoriesRu() {
+  return db.getCategoriesRu();
+
 }Stream<List<ShopList>> getList() {
   return db.getList();
 
@@ -24,6 +27,8 @@ Stream<List<Category>> getCategories() {
 }
 Stream<List<Recipe>>  getRecipe() {
   return db.getRecipe();
+}Stream<List<Recipe>>  getRecipeRu() {
+  return db.getRecipeRu();
 }
 
 

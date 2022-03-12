@@ -116,22 +116,25 @@ class _ProductsPageState extends State<ProductsPage> {
                   ));
             },
           )),
-          Center(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                GestureDetector(
-                  onTap: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (ctx) => BottomBar()));
-                  },
-                  child: Text(
-                    "Go back",
-                    style: TextStyle(
-                        fontFamily: "Lato", fontSize: 20, color: Colors.white),
-                  ),
-                )
-              ],
+          Padding(
+            padding:  EdgeInsets.only(bottom: paddHeight*0.1),
+            child: Center(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (ctx) => BottomBar()));
+                    },
+                    child: Text(
+                      "Go back",
+                      style: TextStyle(
+                          fontFamily: "Lato", fontSize: 25, color: Colors.white),
+                    ),
+                  )
+                ],
+              ),
             ),
           )
         ],

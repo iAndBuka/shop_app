@@ -15,6 +15,7 @@ import '../translations/locale_keys.g.dart';
 
 
 List categories = <Category>[];
+List categoriesRu = <Category>[];
 List shopList1 = <ShopList>[];
 ShopList? a ;
 late bool checkList;
@@ -28,12 +29,17 @@ class ShoppingListPage extends StatefulWidget {
 
 class _ShoppingListPageState extends State<ShoppingListPage> {
   late StreamSubscription<List<Category>> categoryStreamSubscription;
+  late StreamSubscription<List<Category>> categoryRuStreamSubscription;
   late StreamSubscription<ShopList> listStreamSubscription;
   @override
+
   void dispose() {
     if (categoryStreamSubscription != null) {
       print('unsubscribing');
       categoryStreamSubscription.cancel();
+    }if (categoryRuStreamSubscription != null) {
+      print('unsubscribing');
+      categoryRuStreamSubscription.cancel();
     }
     if(listStreamSubscription !=null){
       listStreamSubscription.cancel();
@@ -41,7 +47,7 @@ class _ShoppingListPageState extends State<ShoppingListPage> {
     super.dispose();
   }
 
-  Future<void> loadData(AppUser user) async {
+  Future<void> loadDataEn(AppUser user) async {
     var stream1=  getShopList();
     listStreamSubscription = stream1.listen((ShopList data) {
       a = data;
@@ -52,7 +58,20 @@ class _ShoppingListPageState extends State<ShoppingListPage> {
     });
   }
 
+  Future<void> loadDataRu(AppUser user) async {
+    var stream1=  getShopList();
+    listStreamSubscription = stream1.listen((ShopList data) {
+      a = data;
+    });
+    var stream = getCategoriesRu();
+    categoryRuStreamSubscription = stream.listen((List<Category> data) {
+      categories = data;
+    });
+  }
+
   Widget build(BuildContext context) {
+    String _locale = context.locale.toString();
+
     if (a==null){
         checkList = false;
     }else if(a!.list!.isEmpty){
@@ -66,7 +85,18 @@ class _ShoppingListPageState extends State<ShoppingListPage> {
     final double paddHeight = MediaQuery.of(context).size.height;
     final double paddwidth = MediaQuery.of(context).size.width;
     AppUser user = Provider.of<AppUser>(context);
-    loadData(user);
+    late Stream<QuerySnapshot<Map<String, dynamic>>> stream;
+
+    void test() async {
+      if (_locale == 'en') {
+        loadDataEn(user);
+        stream = FirebaseFirestore.instance.collection('category').snapshots();
+      } else if (_locale == 'ru') {
+        loadDataRu(user);
+        stream = FirebaseFirestore.instance.collection('categoryRu').snapshots();
+      }
+    }
+    test();
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
@@ -99,7 +129,7 @@ class _ShoppingListPageState extends State<ShoppingListPage> {
 
           MediaQuery.removePadding(context: context,removeTop: true,
               child: StreamBuilder(
-                stream: FirebaseFirestore.instance.collection('category').snapshots(),
+                stream: stream,
                 builder: (BuildContext context,
                       AsyncSnapshot<dynamic> snapshot){
                   return Padding(

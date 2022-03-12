@@ -5,7 +5,7 @@ import 'package:shop_app/objects/shop_list.dart';
 import 'category.dart';
 
 class Lists {
-  static Product banana = Product(id: "1", name: "Banana", catId: "1",image: 'assets/banana.png');
+  /*static Product banana = Product(id: "1", name: "Banana", catId: "1",image: 'assets/banana.png');
   static Product cucumber = Product(id: "2", name: "Cucumber", catId: "1",image: 'assets/banana.png');
   static Product melon = Product(id: "3", name: "melon", catId: "1",image: 'assets/banana.png');
   static Product potato = Product(id: "4", name: "Potato", catId: "1",image: 'assets/banana.png');
@@ -29,11 +29,36 @@ class Lists {
   static Product coffee = Product(id: "22", name: "Coffee", catId: "5",image: 'assets/banana.png');
   static Product cola = Product(id: "23", name: "Cola", catId: "5",image: 'assets/banana.png');
   static Product energy = Product(id: "24", name: "Energy drink", catId: "5",image: 'assets/banana.png');
-  static Product water = Product(id: "25", name: "Water", catId: "5",image: 'assets/banana.png');
+  static Product water = Product(id: "25", name: "Water", catId: "5",image: 'assets/banana.png'); */
+
+  static Product banana = Product(id: "1", name: "Бананы", catId: "1",image: 'assets/banana.png');
+  static Product cucumber = Product(id: "2", name: "Огурцы", catId: "1",image: 'assets/cucumber.png');
+  static Product melon = Product(id: "3", name: "Арбуз", catId: "1",image: 'assets/melon.png');
+  static Product potato = Product(id: "4", name: "Картофель", catId: "1",image: 'assets/potato.png');
+  static Product tomato = Product(id: "5", name: "Помидоры", catId: "1",image: 'assets/tomato.png');
+  static Product bread = Product(id: "6", name: "Хлеб", catId: "2",image: 'assets/bread.png');
+  static Product buns = Product(id: "7", name: "Булочки", catId: "2",image: 'assets/buns.png');
+  static Product donuts = Product(id: "8", name: "Пончики", catId: "2",image: 'assets/donuts.png');
+  static Product pie = Product(id: "9", name: "Пирог", catId: "2",image: 'assets/pie.png');
+  static Product croissant = Product(id: "10", name: "Круассаны", catId: "2",image: 'assets/croiss.png');
+  static Product butter = Product(id: "11", name: "Масло", catId: "3",image: 'assets/butter.png');
+  static Product milk = Product(id: "12", name: "Молоко", catId: "3",image: 'assets/milk.png');
+  static Product cheese = Product(id: "13", name: "Сыр", catId: "3",image: 'assets/cheese.png');
+  static Product eggs = Product(id: "14", name: "Яйца", catId: "3",image: 'assets/eggs.png');
+  static Product bacon = Product(id: "16", name: "Бекон", catId: "4",image: 'assets/butter.png');
+  static Product beef = Product(id: "17", name: "Говядина", catId: "4",image: 'assets/butter.png');
+  static Product ham = Product(id: "18", name: "Ветчина", catId: "4",image: 'assets/butter.png');
+  static Product lamb = Product(id: "19", name: "Баранина", catId: "4",image: 'assets/butter.png');
+  static Product chicken = Product(id: "20", name: "Курица", catId: "4",image: 'assets/butter.png');
+  static Product juice = Product(id: "21", name: "Сок", catId: "5",image: 'assets/butter.png');
+  static Product coffee = Product(id: "22", name: "Кофе", catId: "5",image: 'assets/butter.png');
+  static Product cola = Product(id: "23", name: "Кола", catId: "5",image: 'assets/butter.png');
+  static Product energy = Product(id: "24", name: "Энергетик", catId: "5",image: 'assets/butter.png');
+  static Product water = Product(id: "25", name: "Вода", catId: "5",image: 'assets/butter.png');
 
  static List<Product> fruitAndVeges = [banana,cucumber,melon,potato,tomato];
  static List<Product> breadPastries = [bread,buns,donuts,pie,croissant];
- static List<Product> milkCheese = [butter,milk,cheese,eggs,feta];
+ static List<Product> milkCheese = [butter,milk,cheese,eggs];
  static List<Product> meatFish = [bacon,beef,ham,lamb,chicken];
  static List<Product> beverage = [juice,coffee,cola,energy,water];
 

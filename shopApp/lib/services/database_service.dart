@@ -76,9 +76,14 @@ class DataBaseService{
   final CollectionReference _listCollection = FirebaseFirestore.instance.collection('list');
   final CollectionReference _categoryCollection = FirebaseFirestore.instance.collection('category');
   final CollectionReference _recipeCollection = FirebaseFirestore.instance.collection('recipe');
+  final CollectionReference _recipeRuCollection = FirebaseFirestore.instance.collection('recipeRu');
+  final CollectionReference _categoryRuCollection = FirebaseFirestore.instance.collection('categoryRu');
 
   Future addCategory(Category category) async{
     return await _categoryCollection.doc(category.id).set(category.toMap());
+
+  }   Future addCategoryRu(Category category) async{
+    return await _categoryRuCollection.doc(category.id).set(category.toMap());
 
   } Future addRecipe(Recipe recipe) async{
     return await _recipeCollection.doc(recipe.id).set(recipe.toMap());
@@ -88,9 +93,17 @@ class DataBaseService{
     return _categoryCollection.snapshots().map((QuerySnapshot data) =>
         data.docs.map((DocumentSnapshot doc) => Category.fromJson(doc.id,doc.data() as Map<String, dynamic>)).toList());
 
+  } Stream<List<Category>> getCategoriesRu(){
+    return _categoryRuCollection.snapshots().map((QuerySnapshot data) =>
+        data.docs.map((DocumentSnapshot doc) => Category.fromJson(doc.id,doc.data() as Map<String, dynamic>)).toList());
+
   }
   Stream<List<Recipe>> getRecipe(){
     return _recipeCollection.snapshots().map((QuerySnapshot data) =>
+        data.docs.map((DocumentSnapshot doc) => Recipe.fromJson(doc.id,doc.data() as Map<String, dynamic>)).toList());
+
+  } Stream<List<Recipe>> getRecipeRu(){
+    return _recipeRuCollection.snapshots().map((QuerySnapshot data) =>
         data.docs.map((DocumentSnapshot doc) => Recipe.fromJson(doc.id,doc.data() as Map<String, dynamic>)).toList());
 
   }

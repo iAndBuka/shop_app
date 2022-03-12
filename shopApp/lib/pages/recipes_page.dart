@@ -21,30 +21,51 @@ class RecipesPage extends StatefulWidget {
 
 class _RecipesPageState extends State<RecipesPage> {
   late StreamSubscription<List<Recipe>> recipeStreamSubscription;
+  late StreamSubscription<List<Recipe>> recipeRuStreamSubscription;
 
   @override
   void dispose() {
     if (recipeStreamSubscription != null) {
       print('unsubscribing');
       recipeStreamSubscription.cancel();
+    }if (recipeRuStreamSubscription != null) {
+      print('unsubscribing');
+      recipeRuStreamSubscription.cancel();
     }
     super.dispose();
   }
 
-  Future<void> loadData(AppUser user) async {
+  Future<void> loadDataEn(AppUser user) async {
     var stream2 = getRecipe();
+    recipeStreamSubscription = stream2.listen((List<Recipe> data) {
+      recipes = data;
+    });
+  } 
+  Future<void> loadDataRu(AppUser user) async {
+    var stream2 = getRecipeRu();
     recipeStreamSubscription = stream2.listen((List<Recipe> data) {
       recipes = data;
     });
   }
 
   Widget build(BuildContext context) {
+    String _locale = context.locale.toString();
+    late Stream<QuerySnapshot<Map<String, dynamic>>> stream;
     AppUser user = Provider.of<AppUser>(context);
     final Size size = MediaQuery.of(context).size;
     final double paddHeight = MediaQuery.of(context).size.height;
     final double paddwidth = MediaQuery.of(context).size.width;
 
-    loadData(user);
+    void test() async {
+      if (_locale == 'en') {
+        loadDataEn(user);
+        stream = FirebaseFirestore.instance.collection('recipe').snapshots();
+      } else if (_locale == 'ru') {
+        loadDataRu(user);
+        stream = FirebaseFirestore.instance.collection('recipeRu').snapshots();
+      }
+    }
+    test();
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
@@ -65,9 +86,7 @@ class _RecipesPageState extends State<RecipesPage> {
               removeTop: true,
               child: Expanded(
                 child: StreamBuilder(
-                  stream: FirebaseFirestore.instance
-                      .collection("recipe")
-                      .snapshots(),
+                  stream: stream,
                   builder:
                       (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
                     return Padding(
@@ -90,13 +109,15 @@ class _RecipesPageState extends State<RecipesPage> {
                                   children: [
                                     Row(
                                       children: [
-                                        Text(
-                                          recipes[index].name,
-                                          style: TextStyle(
-                                              color: Colors.white,
-                                              fontFamily: "Lato",
-                                              fontWeight: FontWeight.bold,
-                                              fontSize: 15),
+                                        Expanded(
+                                          child: Text(
+                                            recipes[index].name,
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontFamily: "Lato",
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 15),
+                                          ),
                                         )
                                       ],
                                     ),
