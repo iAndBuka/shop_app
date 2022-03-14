@@ -30,3 +30,6 @@ Open the project folder in Android studio.
 Navigate to pubspec.yaml in root directory of project.
 Cick on get all dependencies and upgrade dependencies.
 Now you can run main.dart and it will work.
+
+
+Video demo : https://youtu.be/kgNRx0r9iY4
