@@ -20,17 +20,17 @@ class RecipesPage extends StatefulWidget {
 }
 
 class _RecipesPageState extends State<RecipesPage> {
-  late StreamSubscription<List<Recipe>> recipeStreamSubscription;
-  late StreamSubscription<List<Recipe>> recipeRuStreamSubscription;
+   StreamSubscription<List<Recipe>>? recipeStreamSubscription;
+   StreamSubscription<List<Recipe>>? recipeRuStreamSubscription;
 
   @override
   void dispose() {
     if (recipeStreamSubscription != null) {
       print('unsubscribing');
-      recipeStreamSubscription.cancel();
+      recipeStreamSubscription?.cancel();
     }if (recipeRuStreamSubscription != null) {
       print('unsubscribing');
-      recipeRuStreamSubscription.cancel();
+      recipeRuStreamSubscription?.cancel();
     }
     super.dispose();
   }

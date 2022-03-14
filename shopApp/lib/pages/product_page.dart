@@ -66,54 +66,55 @@ class _ProductsPageState extends State<ProductsPage> {
                 SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
             itemCount: products.length,
             itemBuilder: (context, index) {
-              return GestureDetector(
-                  onTap: () {
-                    Lists.shopList.add(products[index]);
-                    addList(Lists.shopList, user);
-                  },
-                  child: Card(
-                    color: cardColor,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8)),
-                    elevation: 10,
-                    child: Column(
-                      children: [
-                        Container(
-                          color: cardColor,
-                          width: size.width * 0.3,
-                          height: size.height * 0.1,
-                          child: Card(
-                            color: cardColor,
-                            semanticContainer: true,
-                            clipBehavior: Clip.antiAliasWithSaveLayer,
-                            child: Image.asset(
-                              products[index].image,
-                              fit: BoxFit.cover,
-                            ),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10.0),
-                            ),
-                            elevation: 0,
-                          ),
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+              return Padding(
+                padding: const EdgeInsets.all(2.0),
+                child: Container(
+                  child: ElevatedButton(
+                      onPressed: () {
+                        Lists.shopList.add(products[index]);
+                        addList(Lists.shopList, user);
+                      },
+                      style: ButtonStyle(backgroundColor: MaterialStateProperty.all(cardColor)),
+                      child: Container(
+                        decoration: BoxDecoration(borderRadius: BorderRadius.circular(8),color:Colors.transparent,),
+                        child: Column(
                           children: [
                             Container(
-                              child: Text(
-                                products[index].name,
-                                style: TextStyle(
-                                    fontSize: 20,
-                                    fontFamily: "Lato",
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.white),
+                              color: Colors.transparent,
+                              width: size.width * 0.3,
+                              height: size.height * 0.1,
+                              child: Card(
+                                color: cardColor,
+                                semanticContainer: true,
+                                clipBehavior: Clip.antiAliasWithSaveLayer,
+                                child: Image.asset(
+                                  products[index].image,
+                                  fit: BoxFit.cover,
+                                ),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10.0),
+                                ),
+                                elevation: 0,
                               ),
                             ),
+                                Center(
+                                  child: Container(
+                                    child: Text(
+                                      products[index].name,
+                                      style: TextStyle(
+                                          fontSize: 16,
+                                          fontFamily: "Lato",
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.white),
+                                    ),
+                                  ),
+                                ),
+
                           ],
                         ),
-                      ],
-                    ),
-                  ));
+                      )),
+                ),
+              );
             },
           )),
           Padding(
@@ -122,8 +123,9 @@ class _ProductsPageState extends State<ProductsPage> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  GestureDetector(
-                    onTap: () {
+                  ElevatedButton(
+                    style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.transparent),elevation: MaterialStateProperty.all(0)),
+                    onPressed: () {
                       Navigator.push(context,
                           MaterialPageRoute(builder: (ctx) => BottomBar()));
                     },

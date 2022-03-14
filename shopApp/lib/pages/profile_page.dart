@@ -109,7 +109,7 @@ class _ProfilePageState extends State<ProfilePage> {
             ),
           ),
           Text("User",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,fontFamily: "Lato",color: Colors.white), ),
-          Text("user@gmail.com",style: TextStyle(fontSize: 15,fontFamily: "Lato",color: Colors.white), ),
+          Text(_authService.getEmail().toString(),style: TextStyle(fontSize: 15,fontFamily: "Lato",color: Colors.white), ),
           Padding(
             padding: EdgeInsets.only(top: paddHeight*0.1),
             child: Container(

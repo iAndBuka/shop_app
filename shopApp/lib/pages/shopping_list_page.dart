@@ -28,18 +28,18 @@ class ShoppingListPage extends StatefulWidget {
 }
 
 class _ShoppingListPageState extends State<ShoppingListPage> {
-  late StreamSubscription<List<Category>> categoryStreamSubscription;
-  late StreamSubscription<List<Category>> categoryRuStreamSubscription;
+  StreamSubscription<List<Category>>? categoryStreamSubscription;
+  StreamSubscription<List<Category>>? categoryRuStreamSubscription;
   late StreamSubscription<ShopList> listStreamSubscription;
   @override
 
   void dispose() {
     if (categoryStreamSubscription != null) {
       print('unsubscribing');
-      categoryStreamSubscription.cancel();
+      categoryStreamSubscription?.cancel();
     }if (categoryRuStreamSubscription != null) {
       print('unsubscribing');
-      categoryRuStreamSubscription.cancel();
+      categoryRuStreamSubscription?.cancel();
     }
     if(listStreamSubscription !=null){
       listStreamSubscription.cancel();

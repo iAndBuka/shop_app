@@ -25,6 +25,12 @@ class AuthService {
     }
   }
 
+  String? getEmail(){
+    String? email = _fAuth.currentUser?.email.toString();
+    return email;
+}
+
+
   Future<AppUser?> registerWithEmailAndPassword(
       String email, String password) async {
     try {
